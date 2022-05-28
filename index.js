@@ -5,6 +5,7 @@ for (let i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
     let buttonText = this.textContent;
     playSounds(buttonText);
+    buttonAnimation(buttonText);
   });
 }
 
@@ -12,6 +13,7 @@ for (let i = 0; i < btns.length; i++) {
 document.addEventListener("keydown", function(event) {
   let buttonKey = event.key;
   playSounds(buttonKey);
+  buttonAnimation(buttonKey);
 });
 
 // Play sounds
@@ -48,4 +50,13 @@ function playSounds(key) {
     default:
       console.log(buttonText);
   }
+}
+
+// Play animation
+function buttonAnimation(currentKey) {
+  let activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.toggle("pressed");
+  setTimeout(function() {
+    activeButton.classList.toggle("pressed");
+  }, 100);
 }
